@@ -1,15 +1,15 @@
 import express from "express";
-
 import authRouter from "./routes/auth.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 app.use("/auth", authRouter);
 
 const PORT = process.env.PORT || 5000;

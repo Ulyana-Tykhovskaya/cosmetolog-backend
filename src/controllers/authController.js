@@ -44,3 +44,10 @@ export const login = async (req, res, next) => {
     next(err);
   }
 };
+export const logout = async (req, res, next) => {
+  try {
+    return res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+    next(error);
+  }
+};

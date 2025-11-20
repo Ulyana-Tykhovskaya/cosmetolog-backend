@@ -1,4 +1,5 @@
 import express from "express";
+import { upload } from "../middlewares/upload.js";
 import {
   createService,
   getAllServices,
@@ -6,9 +7,10 @@ import {
   deleteService,
 } from "../controllers/serviceController.js";
 import { validateService } from "../middlewares/validateService.js";
+import { parseFormData } from "../middlewares/formDataParser.js";
 const router = express.Router();
-router.post("/", validateService, createService);
+router.post("/", upload.array("imgs"), createService);
 router.get("/", getAllServices);
-router.put("/:id", validateService, updateService);
+router.put("/:id", parseFormData, validateService, updateService);
 router.delete("/:id", deleteService);
 export default router;

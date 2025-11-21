@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import serviceRouter from "./routes/service.js";
 
+import articlesRouter from "./routes/articles.js";
 dotenv.config();
 
 const app = express();
@@ -45,5 +46,5 @@ mongoose
   });
 
 app.use(errorHandler);
-
+app.use("/articles", articlesRouter);
 export default app;
